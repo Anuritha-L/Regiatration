@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 300px;
+            margin: auto;
+            display: none; /* Initially hide all forms */
+        }
+        .form-container.active {
+            display: block; /* Show active form */
+        }
+        label, input, button {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            background-color: teal;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hackathon Event</h1>
+    
+    <div class="form-container active" id="loginContainer">
+        <h2>Login Form</h2>
+        <form id="loginForm">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="loginEmail" required>
+            
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="form-container" id="registrationContainer">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const loginContainer = document.getElementById('loginContainer');
+        const registrationContainer = document.getElementById('registrationContainer');
+
+        // Handle login form submission
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Validate login (for simplicity, assume any input is valid)
+            const loginEmail = document.getElementById('loginEmail').value;
+            const loginPassword = document.getElementById('loginPassword').value;
+
+            if (loginEmail && loginPassword) {
+                // Hide login form and show registration form
+                loginContainer.classList.remove('active');
+                registrationContainer.classList.add('active');
+            } else {
+                alert('Please fill out all fields.');
+            }
+        });
+    </script>
+</body>
+</html>
